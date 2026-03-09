@@ -1,4 +1,4 @@
-const API = 'http://localhost:8080';
+import {API} from './config.js';
 
 // si token existant et valide
 if (localStorage.getItem('jwt_token')) window.location.href = 'html/dashboard.html';
