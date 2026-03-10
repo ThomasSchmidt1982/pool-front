@@ -25,7 +25,7 @@
     </button>
 </nav>
 
-<!-- Contenu -->
+<!-- Contenu tout utilisateurs-->
 <div class="container py-5">
     <h4 class="mb-4 text-secondary">Statut de la piscine</h4>
 
@@ -61,6 +61,26 @@
     </div>
 </div>
 
+
+<div class="container pb-5" id="buy-section">
+    <h4 class="mb-4 text-secondary">Vente de tickets</h4>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm p-4">
+                <i class="bi bi-ticket-perforated-fill fs-1 text-primary mb-3"></i>
+                <label for="kinds-select" class="form-label text-muted">Type de ticket</label>
+                <select class="form-select mb-3" id="kinds-select"></select>
+                <button id="btn-sell-ticket" class="btn btn-primary w-100">Vendre</button>
+                <div id="sell-success" class="alert alert-success mt-3 d-none mb-0">Ticket vendu ✓</div>
+                <div id="sell-error" class="alert alert-danger mt-3 d-none mb-0">Erreur lors de la vente.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- users info section -->
 <div class="container pt-5">
     <button id="btn-users" class="btn btn-outline-primary d-none" data-bs-toggle="collapse"
             data-bs-target="#users-collapse">
@@ -89,6 +109,7 @@
 </div>
 
 
+<!-- employees info section -->
 <div class="container pt-5">
     <button id="btn-employees" class="btn btn-outline-primary d-none" data-bs-toggle="collapse"
             data-bs-target="#employees-collapse">

@@ -25,13 +25,32 @@ async function loadPoolStatus() {
 const user = getTokenPayload();
 document.getElementById('user-name').textContent=`${user.firstname} ${user.lastname}`
 document.getElementById('user-role').textContent = user.role;
-console.log(user.firstname +" "+ user.lastname)
 
 // logout
 document.getElementById('btn-logout').addEventListener('click', () => {
     localStorage.removeItem('jwt_token');
     window.location.href = '../index.html';
 });
+
+// recherche des différents tickets
+async function loadTicketsKinds(){
+    const res = await fetch(`${API}/tickets/kinds`, {
+        method: 'GET',
+        headers: {'Authorization': `Bearer ${token}`}
+    });
+    if (!res.ok) return;
+    const kinds = await res.json();
+
+    const select = document.getElementById('kinds-select');
+    kinds.forEach(kind=>{
+        const option = document.createElement('option');
+        option.value = kind.id;
+        option.textContent = `${kind.name} --- ${kind.price}€`;
+        select.appendChild(option)
+    })
+
+}
+
 
 // recherche infos users
 async function loadUsers() {
@@ -87,4 +106,10 @@ setInterval(loadPoolStatus, 15000)
 if(user.role === 'ROLE_ADMIN'){
     loadUsers()
     loadEmployee()
+    loadTicketsKinds()
+}
+if(user.role === 'ROLE_EMPLOYEE'){
+    loadUsers()
+    loadEmployee()
+    loadTicketsKinds()
 }
