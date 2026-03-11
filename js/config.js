@@ -1,1 +1,3 @@
-export const API = 'http://localhost:8080'
+export const API = window.location.hostname === 'localhost'
+    ? 'http://localhost:8080'
+    : 'https://pool-api-baic.onrender.com/';
