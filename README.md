@@ -10,9 +10,11 @@ Interface web pour la gestion d'une piscine municipale. Frontend vanilla connect
 
 ## Aperçu
 
-| Login | Dashboard |
-|-------|-----------|
-| ![login](#) | ![dashboard](#) |
+| Login                              | Dashboard avec statut piscine          |
+|------------------------------------|----------------------------------------|
+| ![login](docs/login.png)           | ![dashboard1](docs/dashboard1.png)     |
+| Dashboard avec                     | Dashboard avec vente de ticket |
+| ![dashboard2](docs/dashboard2.png) | ![dashboard3](docs/dashboard3.png)     |
 
 ---
 
@@ -81,6 +83,11 @@ Le rôle est extrait du payload JWT pour adapter l'interface :
 pool-front/
 ├── index.html
 ├── favicon.svg
+├── docs/
+│   ├── login.png
+│   └── dashboard1.png
+│   └── dashboard2.png
+│   └── dashboard3.png
 ├── html/
 │   └── dashboard.html
 └── js/
