@@ -1,8 +1,10 @@
 # pool-front
 
-Interface web pour la gestion d'une piscine municipale. Frontend vanilla connecté à [pool-api](https://github.com/ton-user/pool-api).
+Interface web pour la gestion d'une piscine municipale. Frontend vanilla connecté à [pool-api](https://github.com/ThomasSchmidt1982/pool-api).
 
-> ⚠️ Ce projet nécessite que [pool-api](https://github.com/ton-user/pool-api) soit lancé en local.
+🌐 **Démo en ligne** : [https://pool-front.onrender.com](https://pool-front.onrender.com)
+
+> ⚠️ L'API peut mettre quelques secondes à répondre lors de la première connexion (réveil du service Render).
 
 ---
 
@@ -19,20 +21,24 @@ Interface web pour la gestion d'une piscine municipale. Frontend vanilla connect
 - HTML / CSS / JavaScript (Vanilla)
 - [Bootstrap 5.3](https://getbootstrap.com/) — UI
 - [Bootstrap Icons 1.11](https://icons.getbootstrap.com/) — icônes
-- Live Server (WebStorm) — port `5500`
+- Modules ES natifs (pas de bundler)
 
 ---
 
-## Installation
+## Installation locale
 
 ```bash
-git clone https://github.com/ton-user/pool-front.git
+git clone https://github.com/ThomasSchmidt1982/pool-front.git
 cd pool-front
 ```
 
-Ouvre `index.html` avec WebStorm → icône navigateur, ou tout serveur statique sur le port `5500`.
+Ouvre `index.html` avec un serveur statique sur le port `5500` (Live Server, WebStorm...).
 
 > Le port 5500 est requis — le CORS de pool-api est configuré pour cette origine.
+
+L'URL de l'API est détectée automatiquement :
+- En local → `http://localhost:8080`
+- En prod → `https://pool-api-baic.onrender.com`
 
 ---
 
@@ -42,11 +48,11 @@ Ouvre `index.html` avec WebStorm → icône navigateur, ou tout serveur statique
 |---------|-------|-------------|-------------|
 | POST | `/auth/login` | — | Authentification, retourne un JWT |
 | GET | `/pool/status` | ALL | Statut et capacité de la piscine |
-| POST | `/access/entry` | EMPLOYEE, ADMIN | Enregistrer une entrée |
-| POST | `/access/exit` | EMPLOYEE, ADMIN | Enregistrer une sortie |
 | GET | `/users` | ADMIN | Liste des utilisateurs |
-| GET | `/users/subscriptions` | ADMIN, USER | Abonnements |
-| GET | `/users/tickets` | ADMIN, USER | Tickets |
+| GET | `/users/search?q=` | ADMIN, EMPLOYEE | Recherche d'un utilisateur |
+| GET | `/employees` | ADMIN | Liste des employés |
+| POST | `/users/{id}/tickets` | ADMIN, EMPLOYEE | Vente d'un ticket à un utilisateur |
+| GET | `/tickets/kinds` | ADMIN, EMPLOYEE | Types de tickets disponibles |
 
 ---
 
@@ -59,7 +65,13 @@ Chaque requête inclut le header :
 Authorization: Bearer <token>
 ```
 
-Le rôle est extrait du payload JWT pour adapter l'interface (`ADMIN`, `EMPLOYEE`, `USER`).
+Le rôle est extrait du payload JWT pour adapter l'interface :
+
+| Rôle | Accès |
+|------|-------|
+| `ROLE_ADMIN` | Statut piscine, vente tickets, tableaux users/employés |
+| `ROLE_EMPLOYEE` | Statut piscine, vente tickets |
+| `ROLE_USER` | Statut piscine |
 
 ---
 
@@ -68,17 +80,14 @@ Le rôle est extrait du payload JWT pour adapter l'interface (`ADMIN`, `EMPLOYEE
 ```
 pool-front/
 ├── index.html
+├── favicon.svg
 ├── html/
-│   ├── dashboard.html
-│   └── ...
-├── js/
-│   ├── api.js
-│   ├── auth.js
-│   ├── dashboard.js
-│   └── pages/
-│       ├── access.js
-│       ├── users.js
-│       └── subscriptions.js
-└── css/
-    └── style.css
+│   └── dashboard.html
+└── js/
+    ├── config.js       ← URL API (détection auto local/prod)
+    ├── auth.js         ← login / logout
+    ├── utils.js        ← décodage JWT
+    ├── dashboard.js    ← logique principale
+    ├── router.js
+    └── api.js
 ```
