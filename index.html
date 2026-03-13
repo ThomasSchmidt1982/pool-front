@@ -13,22 +13,55 @@
 
 
 <body>
+
 <nav class="navbar navbar-dark bg-primary px-4">
     <span class="navbar-brand fw-bold"><i class="bi bi-droplet-fill me-2"></i>AquaManager</span>
 </nav>
+
 <div class="container min-vh-100 d-flex align-items-center justify-content-center">
     <div class="card p-4 shadow" style="width: 100%; max-width: 400px;">
+        <!-- fomrulaire login -->
         <h4 class="mb-4 text-center">Connexion</h4>
         <div id="login-error" class="alert alert-danger d-none"></div>
         <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" id="input-email" class="form-control" />
+            <label for="input-email" class="form-label">Email</label>
+            <input name="email" type="email" id="input-email" class="form-control"/>
         </div>
         <div class="mb-3">
-            <label class="form-label">Mot de passe</label>
-            <input type="password" id="input-password" class="form-control" />
+            <label for="input-password" class="form-label">Mot de passe</label>
+            <input name="password" type="password" id="input-password" class="form-control"/>
         </div>
         <button id="btn-login" class="btn btn-primary w-100">Se connecter</button>
+        <div class="d-flex justify-content-between mt-3">
+            <a href="#" class="text-muted small">Mot de passe oublié ?</a>
+            <a id="btn-show-register" href="#" class="small">Créer un compte</a>
+        </div>
+
+        <!-- formulaire inscription -->
+        <div id="register-form" class="collapse m-3 border-top pt-3">
+            <h6 class="mb-3">Créer un compte</h6>
+            <div id="register-error" class="alert alert-danger d-none"></div>
+            <div id="register-success" class="alert alert-success d-none"></div>
+            <div class="mb-2">
+                <label for="reg-firstname" class="form-label">Prénom</label>
+                <input name="firstname" type="text" id="reg-firstname" class="form-control" placeholder="Prénom"/>
+            </div>
+            <div class="mb-2">
+                <label for="reg-lastname" class="form-label">Nom</label>
+                <input name="lastname" type="text" id="reg-lastname" class="form-control" placeholder="Nom"/>
+            </div>
+            <div class="mb-2">
+                <label for="reg-email" class="form-label">Email</label>
+                <input name="reg-email" type="email" id="reg-email" class="form-control" placeholder="Email"/>
+            </div>
+            <div class="mb-2">
+                <label for="reg-password" class="form-label">Mot de passe</label>
+                <input name="reg-password" type="password" id="reg-password" class="form-control"
+                       placeholder="Mot de passe (8 caractères min)"/>
+            </div>
+            <button id="btn-register" class="btn btn-success w-100">Créer mon compte</button>
+        </div>
+
     </div>
 </div>
 

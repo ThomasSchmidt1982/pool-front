@@ -190,3 +190,6 @@ if (user.role === 'ROLE_ADMIN') {
     loadUsers();
     loadEmployee();
 }
+
+if (user.role === 'ROLE_USER') {
+}
