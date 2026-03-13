@@ -84,6 +84,36 @@
 </div>
 
 <div class="container pb-5 d-none" id="admin-section">
+
+    <!-- tickets section -->
+    <div class="container pt-5">
+        <button id="btn-tickets" class="btn btn-outline-primary d-none" data-bs-toggle="collapse"
+                data-bs-target="#tickets-collapse">
+            <i class="bi bi-people me-2"></i>Voir les tickets des utilisateurs
+        </button>
+    </div>
+
+    <div class="collapse container py-3" id="tickets-collapse">
+        <div class="container py-5">
+            <h4 class="mb-4 text-secondary">Informations utilisateurs</h4>
+            <table class="table" id="tickets-table">
+                <caption>Tickets utilisateurs</caption>
+                <thead>
+                <tr>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Actif</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Informations des Tickets ici -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
     <!-- users info section -->
     <div class="container pt-5">
         <button id="btn-users" class="btn btn-outline-primary d-none" data-bs-toggle="collapse"
