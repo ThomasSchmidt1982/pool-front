@@ -1,8 +1,8 @@
 import {API} from "./config.js";
-import {getTokenPayload} from "./utils.js";
+import {getTokenPayload, isTokenValid} from "./utils.js";
 
 // si token absent -> retour index.html
-if (!localStorage.getItem('jwt_token')) window.location.href = '../index.html';
+if (!localStorage.getItem('jwt_token') && isTokenValid()) window.location.href = '../index.html';
 
 // affichage du statut piscine
 const token = localStorage.getItem('jwt_token');
