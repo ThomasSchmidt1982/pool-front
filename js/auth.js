@@ -1,7 +1,11 @@
 import {API} from './config.js';
+import {isTokenValid} from "./utils";
 
 // si token existant et valide
-if (localStorage.getItem('jwt_token')) window.location.href = 'html/dashboard.html';
+if (localStorage.getItem('jwt_token') && isTokenValid())
+{
+    window.location.href = 'html/dashboard.html';
+}
 
 // si pas de token actuellement
 document.getElementById('btn-login').addEventListener('click', async () => {

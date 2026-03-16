@@ -7,3 +7,9 @@ export function getTokenPayload() {
         Uint8Array.from(atob(base64), c => c.charCodeAt(0))
     ));
 }
+
+export function isTokenValid(){
+    const payload = getTokenPayload();
+    if(!payload) return false;
+    return payload.exp * 1000 > Date.now();
+}
