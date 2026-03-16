@@ -11,5 +11,6 @@ export function getTokenPayload() {
 export function isTokenValid(){
     const payload = getTokenPayload();
     if(!payload) return false;
+    console.log("payload istokenvalid : " + payload);
     return payload.exp * 1000 > Date.now();
 }
