@@ -1,5 +1,5 @@
 import {API} from './config.js';
-import {isTokenValid} from "./utils";
+import {isTokenValid} from "./utils.js";
 
 // si token existant et valide
 if (localStorage.getItem('jwt_token') && isTokenValid())
