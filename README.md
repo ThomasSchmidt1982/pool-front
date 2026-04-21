@@ -2,7 +2,7 @@
 
 Interface web pour la gestion d'une piscine municipale. Frontend vanilla connecté à [pool-api](https://github.com/ThomasSchmidt1982/pool-api).
 
-🌐 **Démo en ligne** : [https://pool-front.onrender.com](https://pool-front.onrender.com)
+🌐 **Démo en ligne** : [https://pool-front.thomasschmidt.fr](https://pool-front.thomasschmidt.fr)
 
 > ⚠️ L'API peut mettre quelques secondes à répondre lors de la première connexion (réveil du service Render).
 
