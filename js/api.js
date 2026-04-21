@@ -1,6 +1,5 @@
 import {API} from "./config.js";
 
-
 // GET pool/status
 export async function getPoolStatus(token) {
     try {
